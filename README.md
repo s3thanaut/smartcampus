@@ -42,9 +42,24 @@ A custom `LoggingFilter` is implemented to log every incoming HTTP request (Meth
 4. Deploy the generated `smartcampus.war` to your Tomcat `webapps` folder.
 5. Access the API at `http://localhost:8080/smartcampus/api/v1`.
 
+## API End points
+| Request Method | API Endpoint | Description |
+|---|---|---|
+| GET | `/smartcampus/api/v1` | Checks the availability and base connectivity of the Smart Campus API. |
+| GET | `/smartcampus/api/v1/rooms` | Retrieves a list of all rooms registered in the Smart Campus system. |
+| GET | `/smartcampus/api/v1/rooms/AUDI` | Fetches the details of a specific room identified by its ID. |
+| POST | `/smartcampus/api/v1/rooms` | Adds a new room to the Smart Campus system with the provided details. |
+| DELETE | `/smartcampus/api/v1/rooms/LAB-2` | Deletes a specific room (LAB-2) from the Smart Campus system. |
+| GET | `/smartcampus/api/v1/sensors` | Retrieves a list of all sensors registered in the Smart Campus system. |
+| GET | `/smartcampus/api/v1/sensors?type=co2` | Retrieves all sensors filtered by a specific type (e.g., CO2). |
+| POST | `/smartcampus/api/v1/sensors` | Registers a new sensor in the Smart Campus system. |
+| GET | `/smartcampus/api/v1/sensors/SEN-0002/readings` | Retrieves all recorded readings for a specific sensor. |
+| POST | `/smartcampus/api/v1/sensors/SEN-0001/readings` | Logs a new reading entry for a specific active sensor. |
+
+
 ## Sample CURL Commands
 - **Discovery:** `curl -X GET http://localhost:8080/smartcampus/api/v1`
 - **Get All Rooms:** `curl -X GET http://localhost:8080/smartcampus/api/v1/rooms`
-- **Add a Sensor:** `curl -X POST -H "Content-Type: application/json" -d '{"id":"S1", "type":"CO2", "roomId":"LIB-01"}' http://localhost:8080/smartcampus/api/v1/sensors`
-- **Add a Reading:** `curl -X POST -H "Content-Type: application/json" -d '{"value":450.0}' http://localhost:8080/smartcampus/api/v1/sensors/S1/readings`
-- **Delete a Room:** `curl -X DELETE http://localhost:8080/smartcampus/api/v1/rooms/LIB-01`
+- **Add a Sensor:** `curl -X POST -H "Content-Type: application/json" -d '{"type":"<Type>", "roomId":"<Room-ID>"}' http://localhost:8080/smartcampus/api/v1/sensors`
+- **Add a Reading:** `curl -X POST -H "Content-Type: application/json" -d '{"value":<value>}' http://localhost:8080/smartcampus/api/v1/sensors/<Sensor-ID>/readings`
+- **Delete a Room:** `curl -X DELETE http://localhost:8080/smartcampus/api/v1/rooms/<Room-ID>`
