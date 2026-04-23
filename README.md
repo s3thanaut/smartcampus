@@ -36,10 +36,18 @@ The system uses custom `ExceptionMappers` to intercept Java exceptions and retur
 A custom `LoggingFilter` is implemented to log every incoming HTTP request (Method and URI) and outgoing response (Status Code) to the console for monitoring.
 
 ## How to Build and Run
+### Using mvn CLI
 1. Clone the repository.
 2. Ensure you have Maven and Tomcat 8 installed.
 3. Run `mvn clean package`.
 4. Deploy the generated `smartcampus.war` to your Tomcat `webapps` folder.
+5. Access the API at `http://localhost:8080/smartcampus/api/v1`.
+
+### Using NetBeans
+1. Import the Maven project
+2. Download and add Tomcat 8 as the Server
+3. Clean and Build the Project
+4. Run the Tomcat Server and the Project
 5. Access the API at `http://localhost:8080/smartcampus/api/v1`.
 
 ## API End points
